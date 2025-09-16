@@ -39,10 +39,11 @@ reported to your editors. Each diagnostic setting can be:
 - `hint`, `info`, `warning` or `error` to enable and set the severity of the
   diagnostic.
 
-| Setting      | Default   | Description                                                               |
-| ------------ | --------- | ------------------------------------------------------------------------- |
-| `wiki-title` | `"none"`  | Report titles of wiki-links, which is useful if you use IDs for filenames |
-| `dead-link`  | `"error"` | Warn for dead links between notes                                         |
+| Setting           | Default   | Description                                                               |
+| ----------------- | --------- | ------------------------------------------------------------------------- |
+| `wiki-title`      | `"none"`  | Report titles of wiki-links, which is useful if you use IDs for filenames |
+| `dead-link`       | `"error"` | Warn for dead links between notes                                         |
+| `missing-backlink`| `"none"`  | Warn when another notes link to current note without reciprocal backlinks |
 
 ## Complete example
 
@@ -54,6 +55,8 @@ reported to your editors. Each diagnostic setting can be:
 wiki-title = "hint"
 # Warn for dead links between notes.
 dead-link = "error"
+# Warn when notes link here without backlinks.
+missing-backlink = "warning"
 
 [lsp.completion]
 # Show the note title in the completion pop-up, or fallback on its path if empty.

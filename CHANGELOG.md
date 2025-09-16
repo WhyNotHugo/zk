@@ -6,6 +6,11 @@ Format: `<description> (<contributor>, <commit>)`
 
 ## Unreleased
 
+## Added
+
+- LSP diagnostic for missing backlinks when other notes link to current note
+  without reciprocal links (by @WhyNotHugo)
+
 ## Fixed
 
 - Release tarballs now output the program version (by @WhyNotHugo, 344b99f)

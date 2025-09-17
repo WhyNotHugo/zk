@@ -11,6 +11,7 @@ Format: `<description> (<contributor>, <commit>)`
 - Find notes with missing backlinks using `zk list --missing-backlink`
 - LSP diagnostic for missing backlinks when other notes link to current note
   without reciprocal links (by @WhyNotHugo)
+- Find notes with missing backlinks using `zk list --missing-backlink`
 
 ## Fixed
 

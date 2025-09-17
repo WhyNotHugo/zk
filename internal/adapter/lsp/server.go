@@ -1052,11 +1052,13 @@ func (s *Server) getMissingBacklinkDiagnostics(doc *document, notebook *core.Not
 
 		message := fmt.Sprintf("Missing backlink to [%s](%s)", noteTitle, backlink.SourcePath)
 
-		// Place diagnostic at the start of the document since it's a general note-level issue
+		lines := strings.Split(doc.Content, "\n")
+		lastLine := uint32(len(lines) - 1)
+
 		diagnostics = append(diagnostics, protocol.Diagnostic{
 			Range: protocol.Range{
-				Start: protocol.Position{Line: 0, Character: 0},
-				End:   protocol.Position{Line: 0, Character: 0},
+				Start: protocol.Position{Line: lastLine, Character: 0},
+				End:   protocol.Position{Line: lastLine, Character: 0},
 			},
 			Severity: &diagSeverity,
 			Source:   stringPtr("zk"),

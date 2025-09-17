@@ -1050,7 +1050,16 @@ func (s *Server) getMissingBacklinkDiagnostics(doc *document, notebook *core.Not
 			noteTitle = backlink.SourcePath
 		}
 
-		message := fmt.Sprintf("Missing backlink to [%s](%s)", noteTitle, backlink.SourcePath)
+		// Convert path to be relative to current note's directory
+		currentNoteDir := filepath.Dir(doc.Path)
+		sourceNotePath := filepath.Join(notebook.Path, backlink.SourcePath)
+		relativePath, err := filepath.Rel(currentNoteDir, sourceNotePath)
+		if err != nil {
+			// Fallback to original path if relative path calculation fails
+			relativePath = backlink.SourcePath
+		}
+
+		message := fmt.Sprintf("Missing backlink to [%s](%s)", noteTitle, relativePath)
 
 		lines := strings.Split(doc.Content, "\n")
 		lastLine := uint32(len(lines) - 1)
